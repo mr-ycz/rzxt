@@ -13,4 +13,14 @@ public interface MenuService {
     List<Menu> queryOneMenuByUsername(String username);
 
     List<Menu> queryMenuOneChild(Integer menuId, String username);
+
+    List<Menu> queryAllMenu();
+
+    void addMenuRole(Integer roleId, List<Integer> menus);
+
+    List<Integer> queryMenuIdByRoleId(Integer roleId);
+
+    void updateMenuByRole(Integer roleId, List<Integer> menus);
+
+    void deleteMenuByRoleId(Integer roleId);
 }

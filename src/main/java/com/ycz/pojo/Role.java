@@ -21,4 +21,5 @@ public class Role {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;
     private List<Menu> menuList;
+    private List<Integer> menus;
 }

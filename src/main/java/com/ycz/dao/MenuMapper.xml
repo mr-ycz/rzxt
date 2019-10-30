@@ -5,7 +5,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ycz.dao.MenuMapper">
-    
+    <insert id="insertMenu">
+        insert into sys_role_menu(role_id,menu_id) values(#{roleId},#{menu})
+    </insert>
+    <delete id="deleteMenuByRoleId">
+        delete from sys_role_menu where role_id=#{roleId}
+    </delete>
+
     <select id="selectAllPerms" resultType="java.lang.String">
         SELECT sys_menu.perms FROM sys_user
             JOIN sys_user_role ON sys_user.user_id=sys_user_role.user_id
@@ -65,6 +71,12 @@
             JOIN sys_role_menu ON sys_role_menu.role_id=sys_role.role_id
             JOIN sys_menu ON sys_menu.menu_id=sys_role_menu.menu_id
         where username=#{username} and parent_id=#{menuId} and type=1
+    </select>
+    <select id="selectAllMenus" resultType="com.ycz.pojo.Menu">
+        select * from sys_menu
+    </select>
+    <select id="selectMenuByRoleId" resultType="java.lang.Integer">
+        select menu_id from sys_role_menu where role_id=#{roleId}
     </select>
 
 </mapper>

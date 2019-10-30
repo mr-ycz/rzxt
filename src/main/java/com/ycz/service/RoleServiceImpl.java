@@ -52,4 +52,34 @@ public class RoleServiceImpl implements RoleService{
     public void deleteRoleByUserId(Integer userId) {
         roleMapper.deleteRoleByuserId(userId);
     }
+
+    @Override
+    public Integer queryCount() {
+        return roleMapper.selectCount();
+    }
+
+    @Override
+    public List<Role> queryRolesByPage(String order, Integer limit, Integer offset) {
+        return roleMapper.selectRoleByPage(order,limit,offset);
+    }
+
+    @Override
+    public void addARole(Role role) {
+        roleMapper.insertARole(role);
+    }
+
+    @Override
+    public Role queryRoleByRoleId(Integer roleId) {
+        return roleMapper.selectRoleByRoleId(roleId);
+    }
+
+    @Override
+    public void updateARole(Role role) {
+        roleMapper.updateArole(role);
+    }
+
+    @Override
+    public void deleteRoleByRoleId(Integer roleId) {
+        roleMapper.deleteRoleByRoleId(roleId);
+    }
 }

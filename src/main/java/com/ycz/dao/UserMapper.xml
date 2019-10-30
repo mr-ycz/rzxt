@@ -24,7 +24,7 @@
     </select>
     <select id="selectAll" resultType="com.ycz.pojo.User">
         select * from sys_user
-        order by #{order} limit #{offset},#{limit}
+        order by user_id ${order} limit #{offset},#{limit}
     </select>
     <select id="selectAllCount" resultType="java.lang.Integer">
         select count(*) from sys_user

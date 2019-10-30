@@ -47,4 +47,10 @@ public class MenuController {
         return R.ok().put("menuList", menuList).put("permissions", perms);
     }
 
+    @RequestMapping("/select")
+    @ResponseBody
+    public R select(){
+        List<Menu> menuList=menuService.queryAllMenu();
+        return R.ok().put("menuList", menuList);
+    }
 }

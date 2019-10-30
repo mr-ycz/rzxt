@@ -6,8 +6,8 @@
 
     <bean id="myRealm" class="com.ycz.realm.MyRealm">
         <property name="userService" ref="userServiceImpl"/>
-        <!--<property name="roleService" ref="roleServiceImpl"/>-->
-        <!--<property name="permissionService" ref="permissionServiceImpl"/>-->
+        <property name="roleService" ref="roleServiceImpl"/>
+        <property name="menuService" ref="menuServiceImpl"/>
         <!-- 密码比对器 -->
         <!--<property name="credentialsMatcher">-->
             <!--<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
@@ -70,17 +70,17 @@
 
     <!-- CacheManager声明 -->
     <!--<bean id="cacheManager" class="com.ycz.cache.MyShiroCacheManager">-->
-    <!--<property name="redisTemplate" ref="redisTemplate"/>-->
+        <!--<property name="redisTemplate" ref="redisTemplate"/>-->
     <!--</bean>-->
 
     <!-- SessionManager,使用Shiro的DefaultWebSessionManager即可，其中注入自定义的SessionDAO -->
-    <!--<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">-->
-    <!--&lt;!&ndash; 注册SessionDAO,负责将Session对象存入redis &ndash;&gt;-->
-    <!--<property name="sessionDAO">-->
-    <!--<bean class="com.ycz.sessiondao.MySessionDAO">-->
-    <!--<property name="redisTemplate" ref="redisTemplate2"/>-->
-    <!--</bean>-->
-    <!--</property>-->
-    <!--</bean>-->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+    <!-- 注册SessionDAO,负责将Session对象存入redis -->
+        <property name="sessionDAO">
+            <bean class="com.ycz.sessionDAO.MySessionDAO">
+                <property name="template" ref="redisTemplate2"/>
+            </bean>
+        </property>
+    </bean>
 
 </beans>

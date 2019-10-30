@@ -14,4 +14,12 @@ public interface MenuMapper {
     List<Menu> selectOneMenu(@Param("username") String username);
 
     List<Menu> selectMenuOneChild(@Param("menuId") Integer menuId, @Param("username") String username);
+
+    List<Menu> selectAllMenus();
+
+    void insertMenu(@Param("roleId") Integer roleId,@Param("menu") Integer menu);
+
+    List<Integer> selectMenuByRoleId(Integer roleId);
+
+    void deleteMenuByRoleId(Integer roleId);
 }

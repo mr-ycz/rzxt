@@ -19,4 +19,16 @@ public interface RoleMapper {
     void updateRole(@Param("role") Integer role,@Param("userId") Integer userId);
 
     void deleteRoleByuserId(@Param("userId") Integer userId);
+
+    Integer selectCount();
+
+    List<Role> selectRoleByPage(@Param("order") String order,@Param("limit") Integer limit,@Param("offset") Integer offset);
+
+    void insertARole(Role role);
+
+    Role selectRoleByRoleId(Integer roleId);
+
+    void updateArole(Role role);
+
+    void deleteRoleByRoleId(Integer roleId);
 }

@@ -47,4 +47,36 @@ public class MenuServiceImpl implements MenuService {
     public List<Menu> queryMenuOneChild(Integer menuId, String username) {
         return menuMapper.selectMenuOneChild(menuId,username);
     }
+
+    @Override
+    public List<Menu> queryAllMenu() {
+        return menuMapper.selectAllMenus();
+    }
+
+    @Override
+    public void addMenuRole(Integer roleId, List<Integer> menus) {
+        for (Integer menu : menus) {
+            menuMapper.insertMenu(roleId, menu);
+        }
+    }
+
+    @Override
+    public List<Integer> queryMenuIdByRoleId(Integer roleId) {
+        return menuMapper.selectMenuByRoleId(roleId);
+    }
+
+    @Override
+    public void updateMenuByRole(Integer roleId, List<Integer> menus) {
+        //先将角色菜单表中roleId的信息全部删除
+        menuMapper.deleteMenuByRoleId(roleId);
+        //再给roleId添加新的菜单
+        for (Integer menu : menus) {
+            menuMapper.insertMenu(roleId, menu);
+        }
+    }
+
+    @Override
+    public void deleteMenuByRoleId(Integer roleId) {
+        menuMapper.deleteMenuByRoleId(roleId);
+    }
 }

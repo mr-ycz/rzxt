@@ -19,4 +19,16 @@ public interface RoleService {
     void updateRole(List<Integer> roles, Integer userId);
 
     void deleteRoleByUserId(Integer userId);
+
+    Integer queryCount();
+
+    List<Role> queryRolesByPage(String order, Integer limit, Integer offset);
+
+    void addARole(Role role);
+
+    Role queryRoleByRoleId(Integer roleId);
+
+    void updateARole(Role role);
+
+    void deleteRoleByRoleId(Integer roleId);
 }
