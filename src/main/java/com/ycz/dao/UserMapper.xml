@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ycz.dao.UserMapper">
+    <insert id="insertUser">
+        <selectKey resultType="integer" order="AFTER" keyProperty="userId">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_user(username,password,email,mobile,status,sex,create_time,create_user_id)
+        values(#{username},#{password},#{email},#{mobile},#{status},#{sex},#{createTime},#{createUserId})
+    </insert>
+    <update id="updateUser">
+        update sys_user set username=#{username},email=#{email},mobile=#{mobile},sex=#{sex},status=#{status} where user_id=#{userId}
+    </update>
+    <delete id="deleteUserByuserId">
+        delete from sys_user where user_id=#{userId}
+    </delete>
+
+    <select id="selectUserByname" resultType="com.ycz.pojo.User">
+        select * from sys_user where username=#{username}
+    </select>
+    <select id="selectAll" resultType="com.ycz.pojo.User">
+        select * from sys_user
+        order by #{order} limit #{offset},#{limit}
+    </select>
+    <select id="selectAllCount" resultType="java.lang.Integer">
+        select count(*) from sys_user
+    </select>
+    <select id="selectUserById" resultType="com.ycz.pojo.User">
+        select * from sys_user where user_id=#{userId}
+    </select>
+</mapper>
